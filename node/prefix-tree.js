@@ -12,25 +12,6 @@ function insert(tree, word) {
     }
 }
 
-function search(tree, word) {
-    let t = tree
-
-    for (let i = 0; i < word.length; i++) {
-        if (!t) {
-            return []
-        }
-        t = t[word[i]]
-    }
-
-    const res = collect(t)
-
-    if (res.length == 0) {
-        return []
-    }
-
-    return res.sort().map((suffix) => word + suffix)
-}
-
 function collect(tree) {
     if (!tree) {
         return []
@@ -70,6 +51,25 @@ function collect(tree) {
     return paths
 }
 
+function search(tree, word) {
+    let t = tree
+
+    for (let i = 0; i < word.length; i++) {
+        if (!t) {
+            return []
+        }
+        t = t[word[i]]
+    }
+
+    const res = collect(t)
+
+    if (res.length == 0) {
+        return []
+    }
+
+    return res.sort().map((suffix) => word + suffix)
+}
+
 async function main() {
     const tree = {}
 
@@ -79,7 +79,7 @@ async function main() {
 
     console.log(JSON.stringify(tree, null, 4))
 
-    const res = search(tree, "banana")
+    const res = search(tree, "do")
     console.log(res)
 }
 
