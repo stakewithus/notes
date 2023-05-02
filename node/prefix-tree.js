@@ -1,4 +1,13 @@
-const words = ["apple", "banana", "bat", "cat", "dog", "donut"]
+const words = [
+    "apple",
+    "banana",
+    "bat",
+    "cat",
+    "dog",
+    "donut",
+    "gas",
+    "gasless",
+]
 
 function insert(tree, word) {
     let t = tree
@@ -7,6 +16,9 @@ function insert(tree, word) {
 
         if (!t[w]) {
             t[w] = {}
+        }
+        if (i == word.length - 1) {
+            t[w] = { "": {} }
         }
         t = t[w]
     }
@@ -79,7 +91,6 @@ async function main() {
 
     console.log(JSON.stringify(tree, null, 4))
 
-    const res = search(tree, "do")
     console.log(res)
 }
 
